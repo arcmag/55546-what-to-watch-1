@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test App 1`] = `
+<div>
+  <h1>
+    React Application
+  </h1>
+  <section
+    className="catalog"
+  >
+    <h2
+      className="catalog__title visually-hidden"
+    >
+      Catalog
+    </h2>
+    <article
+      className="small-movie-card catalog__movies-card"
+    >
+      <button
+        className="small-movie-card__play-btn"
+        type="button"
+      >
+        Play
+      </button>
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Macbeth"
+          height="175"
+          src="img/macbeth.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Fantastic Beasts
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+    >
+      <button
+        className="small-movie-card__play-btn"
+        type="button"
+      >
+        Play
+      </button>
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Macbeth"
+          height="175"
+          src="img/macbeth.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Bohemian Rhapsody
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+    >
+      <button
+        className="small-movie-card__play-btn"
+        type="button"
+      >
+        Play
+      </button>
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Macbeth"
+          height="175"
+          src="img/macbeth.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Macbeth
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+    >
+      <button
+        className="small-movie-card__play-btn"
+        type="button"
+      >
+        Play
+      </button>
+      <div
+        className="small-movie-card__image"
+      >
+        <img
+          alt="Macbeth"
+          height="175"
+          src="img/macbeth.jpg"
+          width="280"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+        >
+          Macbeth 2
+        </a>
+      </h3>
+    </article>
+  </section>
+</div>
+`;
