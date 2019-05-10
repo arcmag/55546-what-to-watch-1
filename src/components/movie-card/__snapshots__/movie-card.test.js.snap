@@ -1,11 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test MovieCard 1`] = `
+exports[`Test MoviesList 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
 >
   <button
     className="small-movie-card__play-btn"
+    onClick={[MockFunction]}
     type="button"
   >
     Play
@@ -16,7 +17,7 @@ exports[`Test MovieCard 1`] = `
     <img
       alt="Macbeth"
       height="175"
-      src="img/macbeth.jpg"
+      src="test.jpg"
       width="280"
     />
   </div>
@@ -27,7 +28,7 @@ exports[`Test MovieCard 1`] = `
       className="small-movie-card__link"
       href="movie-page.html"
     >
-      0
+      Title film
     </a>
   </h3>
 </article>

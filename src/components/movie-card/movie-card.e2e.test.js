@@ -5,11 +5,20 @@ import MovieCard from "./movie-card.jsx";
 
 Enzyme.configure({adapter: new Adapter()});
 
+const mockData = {
+  src: `test.jpg`,
+  title: `Title film`
+};
+
 it(`Test button movie card`, () => {
-  const testClickFn = jest.fn();
-  const card = shallow(<MovieCard title={0} onButtonPlayClick={testClickFn} />);
+  let activeStateMovie = null;
+  const card = shallow(<MovieCard
+    data={mockData}
+    onButtonPlayClick={() => {
+      activeStateMovie = mockData;
+    }}
+  />);
   const btnStart = card.find(`.small-movie-card__play-btn`);
-  expect(testClickFn).toHaveBeenCalledTimes(0);
   btnStart.simulate(`click`);
-  expect(testClickFn).toHaveBeenCalledTimes(1);
+  expect(activeStateMovie).toEqual(mockData);
 });

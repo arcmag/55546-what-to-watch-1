@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Test App 1`] = `
+exports[`Test MainPage 1`] = `
 Array [
   <div
     className="visually-hidden"

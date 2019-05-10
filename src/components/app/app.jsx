@@ -1,22 +1,18 @@
 import React from 'react';
 import propTypes from 'prop-types';
 
-import MovieCard from '../movie-card/movie-card.jsx';
+import MainPage from '../main-page/main-page.jsx';
 
-const movieCardTitles = [`Fantastic Beasts`, `Bohemian Rhapsody`, `Macbeth`, `Macbeth 2`];
+const App = (props) => {
+  const {films} = props;
 
-const App = () => {
-  App.propTypes = {
-    movieCardTitles: propTypes.array
-  };
+  return <React.Fragment>
+    <MainPage films={films} />
+  </React.Fragment>;
+};
 
-  return <div>
-    <h1>React Application</h1>
-    <section className="catalog">
-      <h2 className="catalog__title visually-hidden">Catalog</h2>
-      {movieCardTitles.map((it, idx) => <MovieCard key = {idx} title = {it} />)}
-    </section>
-  </div>;
+App.propTypes = {
+  films: propTypes.array.isRequired
 };
 
 export default App;

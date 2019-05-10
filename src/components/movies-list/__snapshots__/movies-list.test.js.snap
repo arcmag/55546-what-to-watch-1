@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test MoviesList 1`] = `
+<div
+  className="catalog__movies-list"
+>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <button
+      className="small-movie-card__play-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Play
+    </button>
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Macbeth"
+        height="175"
+        src="test.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Title film
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+  >
+    <button
+      className="small-movie-card__play-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      Play
+    </button>
+    <div
+      className="small-movie-card__image"
+    >
+      <img
+        alt="Macbeth"
+        height="175"
+        src="test.jpg"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="movie-page.html"
+      >
+        Title film
+      </a>
+    </h3>
+  </article>
+</div>
+`;
