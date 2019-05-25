@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test GenreList renderer 1`] = `
+<video
+  autoPlay={true}
+  height="175"
+  muted={true}
+  poster="video.mp4"
+  src="video.mp4"
+  width="280"
+/>
+`;

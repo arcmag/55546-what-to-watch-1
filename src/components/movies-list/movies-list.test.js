@@ -5,10 +5,12 @@ import MoviesList from "./movies-list.jsx";
 const mockFilms = [
   {
     src: `test.jpg`,
+    video: `test.mp4`,
     title: `Title film`
   },
   {
     src: `test.jpg`,
+    video: `test.mp4`,
     title: `Title film`
   }
 ];

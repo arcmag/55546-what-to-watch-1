@@ -27,6 +27,10 @@ class MovieCard extends React.PureComponent {
   }
 
   _onImgMouseOut() {
+    if (this.state.timerActivated) {
+      clearTimeout(this.state.timerActivated);
+    }
+
     this.setState({
       timerActivated: null,
       isActivated: false
@@ -37,7 +41,9 @@ class MovieCard extends React.PureComponent {
     const {title, src, video} = this.props.data;
     // const {onButtonPlayClick} = this.props;
 
-    return <article className="small-movie-card catalog__movies-card">
+    return <article
+      className="small-movie-card catalog__movies-card"
+    >
       <div
         className="small-movie-card__image"
         onMouseOver={this._onImgMouseOver}

@@ -4,6 +4,7 @@ import MovieCard from "./movie-card.jsx";
 
 const mockData = {
   src: `test.jpg`,
+  video: `test.mp4`,
   title: `Title film`
 };
 
