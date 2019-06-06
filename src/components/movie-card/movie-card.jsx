@@ -39,9 +39,13 @@ class MovieCard extends React.PureComponent {
 
   render() {
     const {title, src, video} = this.props.data;
-    // const {onButtonPlayClick} = this.props;
+    const {onCardClick} = this.props;
 
     return <article
+      onClick={() => {
+        onCardClick(this.props.data);
+        console.log(this.props.data);
+      }}
       className="small-movie-card catalog__movies-card"
     >
       <div
@@ -68,7 +72,7 @@ MovieCard.propTypes = {
     video: propTypes.string.isRequired,
     src: propTypes.string.isRequired,
   }).isRequired,
-  onButtonPlayClick: propTypes.func
+  onCardClick: propTypes.func.isRequired
 };
 
 export default MovieCard;

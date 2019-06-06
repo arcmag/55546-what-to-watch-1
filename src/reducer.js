@@ -5,8 +5,13 @@ const initialState = {
   films
 };
 
+const ActionType = {
+  SET_GENRE: `SET_GENRE`,
+  GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
+};
+
 const ActionsCreator = {
-  'GET_FILMS_BY_GENRE': (genre) => {
+  getFilmsByGenre: (genre) => {
     let filmsList = initialState.films.map((it) => Object.assign({}, it));
 
     if (genre && genre !== `All genres`) {
@@ -14,18 +19,30 @@ const ActionsCreator = {
     }
 
     return {
-      type: `GET_FILMS_BY_GENRE`,
+      type: ActionType.GET_FILMS_BY_GENRE,
       payload: filmsList
     };
-  }
+  },
+  setGenre: (genre) => {
+    let filmsList = initialState.films.map((it) => Object.assign({}, it));
+
+    if (genre && genre !== `All genres`) {
+      filmsList = filmsList.filter((it) => it.genre === genre);
+    }
+
+    return {
+      type: ActionType.GET_FILMS_BY_GENRE,
+      payload: filmsList
+    };
+  },
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case `SET_GENRE`: return Object.assign({}, state, {
+    case ActionType.SET_GENRE: return Object.assign({}, state, {
       genre: action.payload
     });
-    case `GET_FILMS_BY_GENRE`: return Object.assign({}, state, {
+    case ActionType.GET_FILMS_BY_GENRE: return Object.assign({}, state, {
       films: action.payload
     });
   }

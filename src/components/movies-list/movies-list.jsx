@@ -19,20 +19,22 @@ class MoviesList extends React.PureComponent {
   }
 
   render() {
-    const {films} = this.props;
+    const {films, setActiveItem} = this.props;
 
     return <div className="catalog__movies-list">
       {films.map((it, idx) => <MovieCard
         key={idx}
         data={it}
-        onButtonPlayClick={this._setActiveMovie.bind(this)}
+        WrapperMoviesList={this._setActiveMovie.bind(this)}
+        onCardClick={setActiveItem}
       />)}
     </div>;
   }
 }
 
 MoviesList.propTypes = {
-  films: propTypes.array.isRequired
+  films: propTypes.array.isRequired,
+  setActiveItem: propTypes.func.isRequired,
 };
 
 export default MoviesList;

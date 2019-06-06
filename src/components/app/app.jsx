@@ -7,13 +7,6 @@ import MainPage from '../main-page/main-page.jsx';
 
 let genres = null;
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      genres: null
-    };
-  }
-
   render() {
     const {films, getFilmsByGenre, setActiveGenre, genre} = this.props;
 
@@ -47,10 +40,10 @@ const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
 
 const mapDispatchToProps = (dispatch) => ({
   getFilmsByGenre: (genre) => {
-    dispatch(ActionsCreator[`GET_FILMS_BY_GENRE`](genre));
+    dispatch(ActionsCreator.getFilmsByGenre(genre));
   },
   setActiveGenre: (genre) => {
-    dispatch({type: `SET_GENRE`, payload: genre});
+    dispatch(ActionsCreator.setGenre(genre));
   }
 });
 

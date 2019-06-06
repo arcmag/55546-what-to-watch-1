@@ -4,18 +4,18 @@ import propTypes from 'prop-types';
 import MoviesList from '../movies-list/movies-list.jsx';
 import GenreList from '../genre-list/genre-list.jsx';
 
-class MainPage extends React.PureComponent {
-  constructor(props) {
-    super(props);
-  }
+import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
+const WrapperGenreList = withActiveItem(GenreList);
+const WrapperMoviesList = withActiveItem(MoviesList);
+
+class MainPage extends React.PureComponent {
   render() {
     const {
       setActiveGenre,
       getFilmsByGenre,
       films,
-      genres,
-      selectedGenre
+      genres
     } = this.props;
 
     return <React.Fragment>
@@ -110,13 +110,12 @@ class MainPage extends React.PureComponent {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
-          <GenreList
-            selectedGenre={selectedGenre}
+          <WrapperGenreList
             setActiveGenre={setActiveGenre}
             getFilmsByGenre={getFilmsByGenre}
             genres={genres}
           />
-          <MoviesList films={films} />
+          <WrapperMoviesList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>

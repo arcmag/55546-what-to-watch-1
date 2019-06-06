@@ -2,17 +2,25 @@ import React from 'react';
 import propTypes from 'prop-types';
 
 const GenreList = (props) => {
-  const {getFilmsByGenre, genres, selectedGenre, setActiveGenre} = props;
+  const {
+    getFilmsByGenre,
+    genres,
+    setActiveGenre,
+    setActiveItem,
+    activeItem,
+  } = props;
 
   return <ul className="catalog__genres-list">
     {genres.map((it, idx) =>
       <li
         key={idx}
-        className={`catalog__genres-item ${it === selectedGenre ? `catalog__genres-item--active` : ``}`}
+        className={`catalog__genres-item ${it === activeItem ? `catalog__genres-item--active` : ``}`}
       >
         <a href="#" className="catalog__genres-link" onClick={(evt) => {
-          getFilmsByGenre(evt.target.textContent);
-          setActiveGenre(evt.target.textContent);
+          evt.preventDefault();
+          getFilmsByGenre(it);
+          setActiveGenre(it);
+          setActiveItem(it);
         }}>{it}</a>
       </li>
     )}
@@ -22,8 +30,9 @@ const GenreList = (props) => {
 GenreList.propTypes = {
   getFilmsByGenre: propTypes.func.isRequired,
   genres: propTypes.array.isRequired,
-  selectedGenre: propTypes.string.isRequired,
   setActiveGenre: propTypes.func.isRequired,
+  setActiveItem: propTypes.func.isRequired,
+  activeItem: propTypes.any,
 };
 
 export default GenreList;
