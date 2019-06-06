@@ -38,7 +38,12 @@ class MovieCard extends React.PureComponent {
   }
 
   render() {
-    const {title, src, video} = this.props.data;
+    const {
+      previewImage,
+      posterImage,
+      previewVideoLink,
+      name,
+    } = this.props.data;
     const {onCardClick} = this.props;
 
     return <article
@@ -53,25 +58,19 @@ class MovieCard extends React.PureComponent {
         onMouseOver={this._onImgMouseOver}
         onMouseOut={this._onImgMouseOut}
       >
-        {
-          this.state.isActivated ?
-            <VideoPlayer src={src} video={video} /> :
-            <img src={src} alt={title} width="280" height="175" />
-        }
+        {this.state.isActivated ?
+          <VideoPlayer poster={posterImage} src={previewVideoLink} /> :
+          <img src={previewImage} alt={name} width="280" height="175" />}
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{title}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
       </h3>
     </article>;
   }
 }
 
 MovieCard.propTypes = {
-  data: propTypes.shape({
-    title: propTypes.string.isRequired,
-    video: propTypes.string.isRequired,
-    src: propTypes.string.isRequired,
-  }).isRequired,
+  data: propTypes.object.isRequired,
   onCardClick: propTypes.func.isRequired
 };
 

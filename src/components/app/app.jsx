@@ -1,18 +1,22 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {ActionsCreator} from '../../reducer';
+import {ActionsCreator as UserActionsCreator} from '../../reducer/user/user';
+import {ActionsCreator as DataActionsCreator} from '../../reducer/data/data';
+import {getFilms, getGenresList} from '../../reducer/data/selectors';
+import {getGenre} from '../../reducer/user/selectors';
 
 import MainPage from '../main-page/main-page.jsx';
 
-let genres = null;
 class App extends React.Component {
   render() {
-    const {films, getFilmsByGenre, setActiveGenre, genre} = this.props;
-
-    if (!genres) {
-      genres = [`All genres`, ...new Set(films.map((it) => it.genre))];
-    }
+    const {
+      films,
+      getFilmsByGenre,
+      setActiveGenre,
+      genre,
+      genresList,
+    } = this.props;
 
     return <React.Fragment>
       <MainPage
@@ -20,7 +24,7 @@ class App extends React.Component {
         setActiveGenre={setActiveGenre}
         films={films}
         selectedGenre={genre}
-        genres={genres}
+        genres={genresList}
       />
     </React.Fragment>;
   }
@@ -28,22 +32,24 @@ class App extends React.Component {
 
 App.propTypes = {
   films: propTypes.array.isRequired,
+  genresList: propTypes.array.isRequired,
   genre: propTypes.string.isRequired,
   getFilmsByGenre: propTypes.func.isRequired,
   setActiveGenre: propTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
-  films: state.films,
-  genre: state.genre,
+  genresList: getGenresList(state),
+  films: getFilms(state),
+  genre: getGenre(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getFilmsByGenre: (genre) => {
-    dispatch(ActionsCreator.getFilmsByGenre(genre));
+    dispatch(DataActionsCreator.getFilmsByGenre(genre));
   },
   setActiveGenre: (genre) => {
-    dispatch(ActionsCreator.setGenre(genre));
+    dispatch(UserActionsCreator.setGenre(genre));
   }
 });
 

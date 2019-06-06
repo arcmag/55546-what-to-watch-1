@@ -7,13 +7,13 @@ const VideoPlayer = (props) => {
     height="175"
     autoPlay={true}
     muted={true}
-    poster={props.src}
-    src={props.video}
+    poster={props.poster}
+    src={props.src}
   ></video>;
 };
 
 VideoPlayer.propTypes = {
-  video: propTypes.string.isRequired,
+  poster: propTypes.string.isRequired,
   src: propTypes.string.isRequired,
 };
 
