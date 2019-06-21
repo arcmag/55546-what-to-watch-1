@@ -8,7 +8,8 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {createAPI} from './api';
 import reducer from './reducer/index.js';
 import {Operation} from './reducer/data/data';
-import {BrowserRouter} from 'react-router-dom';
+
+// import {getRequired} from './reducer/user/selectors';
 
 const mainContainer = document.querySelector(`#root`);
 
@@ -27,9 +28,7 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <App />
       </Provider>,
       mainContainer
   );

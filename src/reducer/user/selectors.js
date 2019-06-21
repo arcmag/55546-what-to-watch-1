@@ -5,3 +5,7 @@ const NAME_SPACE = NameSpace.USER;
 export const getGenre = (state) => {
   return state[NAME_SPACE].genre;
 };
+
+export const getRequired = (state) => {
+  return state[NAME_SPACE].isRequired;
+};

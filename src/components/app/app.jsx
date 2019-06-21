@@ -6,9 +6,14 @@ import {ActionsCreator as DataActionsCreator} from '../../reducer/data/data';
 import {getFilms, getGenresList} from '../../reducer/data/selectors';
 import {getGenre} from '../../reducer/user/selectors';
 
-import {Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route} from 'react-router-dom';
 
 import MainPage from '../main-page/main-page.jsx';
+import Header from '../header/header.jsx';
+import SignIn from '../sign-in/sign-in.jsx';
+import Favorites from '../favorites/favorites.jsx';
+
+import history from '../../history.js';
 
 class App extends React.Component {
   render() {
@@ -20,27 +25,24 @@ class App extends React.Component {
       genresList,
     } = this.props;
 
-    return <Switch>
-      <Route path="/" render={() => {
-        return <MainPage
-          getFilmsByGenre={getFilmsByGenre}
-          setActiveGenre={setActiveGenre}
-          films={films}
-          selectedGenre={genre}
-          genres={genresList}
-        />;
-      }}/>
-    </Switch>;
-
-    // return <React.Fragment>
-    //   <MainPage
-    //     getFilmsByGenre={getFilmsByGenre}
-    //     setActiveGenre={setActiveGenre}
-    //     films={films}
-    //     selectedGenre={genre}
-    //     genres={genresList}
-    //   />
-    // </React.Fragment>;
+    return <>
+      <Header />
+      <Router history={history}>
+        <Switch>
+          <Route exact path="/" render={() => {
+            return <MainPage
+              getFilmsByGenre={getFilmsByGenre}
+              setActiveGenre={setActiveGenre}
+              films={films}
+              selectedGenre={genre}
+              genres={genresList}
+            />;
+          }}/>
+          <Route path="/favorites" component={Favorites} />
+          <Route path="/login" component={SignIn} />
+        </Switch>
+      </Router>
+    </>;
   }
 }
 
