@@ -6,6 +6,8 @@ import {ActionsCreator as DataActionsCreator} from '../../reducer/data/data';
 import {getFilms, getGenresList} from '../../reducer/data/selectors';
 import {getGenre} from '../../reducer/user/selectors';
 
+import {Switch, Route} from 'react-router-dom';
+
 import MainPage from '../main-page/main-page.jsx';
 
 class App extends React.Component {
@@ -18,15 +20,27 @@ class App extends React.Component {
       genresList,
     } = this.props;
 
-    return <React.Fragment>
-      <MainPage
-        getFilmsByGenre={getFilmsByGenre}
-        setActiveGenre={setActiveGenre}
-        films={films}
-        selectedGenre={genre}
-        genres={genresList}
-      />
-    </React.Fragment>;
+    return <Switch>
+      <Route path="/" render={() => {
+        return <MainPage
+          getFilmsByGenre={getFilmsByGenre}
+          setActiveGenre={setActiveGenre}
+          films={films}
+          selectedGenre={genre}
+          genres={genresList}
+        />;
+      }} />
+    </Switch>;
+
+    // return <React.Fragment>
+    //   <MainPage
+    //     getFilmsByGenre={getFilmsByGenre}
+    //     setActiveGenre={setActiveGenre}
+    //     films={films}
+    //     selectedGenre={genre}
+    //     genres={genresList}
+    //   />
+    // </React.Fragment>;
   }
 }
 

@@ -8,11 +8,15 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {createAPI} from './api';
 import reducer from './reducer/index.js';
 import {Operation} from './reducer/data/data';
+import {BrowserRouter} from 'react-router-dom';
 
 const mainContainer = document.querySelector(`#root`);
 
 const init = () => {
-  const api = createAPI((...args) => store.dispatch(...args));
+  // const api = createAPI((...args) => store.dispatch(...args));
+  const api = createAPI(() => {
+    console.log(1);
+  });
 
   const store = createStore(
       reducer,
@@ -23,7 +27,9 @@ const init = () => {
 
   ReactDOM.render(
       <Provider store={store}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </Provider>,
       mainContainer
   );
