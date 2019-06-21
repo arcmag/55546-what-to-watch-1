@@ -29,7 +29,7 @@ class App extends React.Component {
           selectedGenre={genre}
           genres={genresList}
         />;
-      }} />
+      }}/>
     </Switch>;
 
     // return <React.Fragment>
