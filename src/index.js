@@ -8,15 +8,13 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {createAPI} from './api';
 import reducer from './reducer/index.js';
 import {Operation} from './reducer/data/data';
-
-// import {getRequired} from './reducer/user/selectors';
+import {Operation as UserOperation, ActionsCreator} from './reducer/user/user';
 
 const mainContainer = document.querySelector(`#root`);
 
 const init = () => {
-  // const api = createAPI((...args) => store.dispatch(...args));
   const api = createAPI(() => {
-    console.log(1);
+    store.dispatch(ActionsCreator.setRequired(false));
   });
 
   const store = createStore(
@@ -25,6 +23,7 @@ const init = () => {
   );
 
   store.dispatch(Operation.loadFilms());
+  store.dispatch(UserOperation.checkAuthorization());
 
   ReactDOM.render(
       <Provider store={store}>

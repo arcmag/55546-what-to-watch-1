@@ -49,7 +49,6 @@ class MovieCard extends React.PureComponent {
     return <article
       onClick={() => {
         onCardClick(this.props.data);
-        console.log(this.props.data);
       }}
       className="small-movie-card catalog__movies-card"
     >

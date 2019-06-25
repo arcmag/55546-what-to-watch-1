@@ -3,12 +3,14 @@ const MAX_COUNT_GENRES_FILMS = 7;
 const initialState = {
   genresList: [],
   films: [],
+  favoriteFilms: [],
 };
 
 const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   GET_FILMS_BY_GENRE: `GET_FILMS_BY_GENRE`,
   SET_GENRES_LIST: `SET_GENRES_LIST`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
 };
 
 const filmsDataAdapter = (films) => films.map((it) => {
@@ -52,6 +54,12 @@ const ActionsCreator = {
       payload: films
     };
   },
+  loadFavoriteFilms: (films = []) => {
+    return {
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: films
+    };
+  },
   setGenresList: (genresList = []) => {
     return {
       type: ActionType.SET_GENRES_LIST,
@@ -70,6 +78,14 @@ const Operation = {
         dispatch(ActionsCreator.setGenresList(films));
       });
   },
+  loadFavoriteFilms: () => (dispatch, _getState, api) => {
+    return api.get(`/favorite`)
+      .then((response) => {
+        const films = filmsDataAdapter(response.data || []);
+        initialState.favoriteFilms = films;
+        dispatch(ActionsCreator.loadFavoriteFilms(films));
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -83,6 +99,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FILMS: return Object.assign({}, state, {
       films: action.payload
     });
+    case ActionType.LOAD_FAVORITE_FILMS: return Object.assign({}, state, {
+      favoriteFilms: action.payload
+    });
+
   }
 
   return state;

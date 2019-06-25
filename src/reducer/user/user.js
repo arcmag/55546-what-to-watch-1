@@ -1,11 +1,32 @@
 const initialState = {
   isRequired: null,
   genre: `All genres`,
+  user: {},
 };
 
 const ActionType = {
   SET_GENRE: `SET_GENRE`,
   SET_REQUIRED: `SET_REQUIRED`,
+  SIGN_IN: `SIGN_IN`,
+};
+
+const Operation = {
+  checkAuthorization: () => (dispatch, _getSate, api) => {
+    return api.get(`/login`)
+      .then((response) => {
+        if (response.data) {
+          dispatch(ActionsCreator.signIn(response.data));
+          dispatch(ActionsCreator.setRequired(true));
+        }
+      });
+  },
+  signIn: (data) => (dispatch, _getSate, api) => {
+    return api.post(`/login`, data)
+      .then((response) => {
+        dispatch(ActionsCreator.signIn(response.data));
+        dispatch(ActionsCreator.setRequired(true));
+      });
+  }
 };
 
 const ActionsCreator = {
@@ -15,12 +36,18 @@ const ActionsCreator = {
       payload: genre
     };
   },
-  SET_REQUIRED: (status) => {
+  setRequired: (status) => {
     return {
       type: ActionType.SET_REQUIRED,
       payload: status
     };
   },
+  signIn: (user) => {
+    return {
+      type: ActionType.SIGN_IN,
+      payload: user
+    };
+  }
 };
 
 const reducer = (state = initialState, action) => {
@@ -31,6 +58,9 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_REQUIRED: return Object.assign({}, state, {
       isRequired: action.payload
     });
+    case ActionType.SIGN_IN: return Object.assign({}, state, {
+      user: action.payload
+    });
   }
 
   return state;
@@ -38,5 +68,6 @@ const reducer = (state = initialState, action) => {
 export {
   reducer,
   ActionsCreator,
-  ActionType
+  ActionType,
+  Operation
 };

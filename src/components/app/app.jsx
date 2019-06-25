@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 import {ActionsCreator as UserActionsCreator} from '../../reducer/user/user';
 import {ActionsCreator as DataActionsCreator} from '../../reducer/data/data';
 import {getFilms, getGenresList} from '../../reducer/data/selectors';
-import {getGenre} from '../../reducer/user/selectors';
+import {getGenre, getRequired} from '../../reducer/user/selectors';
 
-import {Router, Switch, Route} from 'react-router-dom';
+import {Router, Switch, Route, Redirect} from 'react-router-dom';
 
 import MainPage from '../main-page/main-page.jsx';
 import Header from '../header/header.jsx';
@@ -23,6 +23,7 @@ class App extends React.Component {
       setActiveGenre,
       genre,
       genresList,
+      isRequired,
     } = this.props;
 
     return <>
@@ -38,8 +39,27 @@ class App extends React.Component {
               genres={genresList}
             />;
           }}/>
-          <Route path="/favorites" component={Favorites} />
-          <Route path="/login" component={SignIn} />
+
+          <Route path="/favorites" render={() => {
+            if (!isRequired) {
+              return <Redirect to="/" />;
+            }
+
+            return <Favorites />;
+          }} />
+
+          <Route exact path="/login" render={() => {
+            if (isRequired === null) {
+              return null;
+            }
+
+            if (isRequired) {
+              return <Redirect to="/" />;
+            }
+
+            return <SignIn />;
+          }} />
+
         </Switch>
       </Router>
     </>;
@@ -55,6 +75,7 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+  isRequired: getRequired(state),
   genresList: getGenresList(state),
   films: getFilms(state),
   genre: getGenre(state),

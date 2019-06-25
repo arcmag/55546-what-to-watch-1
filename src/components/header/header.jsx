@@ -6,7 +6,7 @@ const Header = () => {
       <symbol id="add" viewBox="0 0 19 20">
         <title>+</title>
         <desc>Created with Sketch.</desc>
-        <g id="Page-1" stroke="none" strokWidth="1" fill="none" fillRule="evenodd">
+        <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <polygon id="+" fill="#EEE5B5" points="10.777832 11.2880859 10.777832 19.5527344 8.41650391 19.5527344 8.41650391 11.2880859 0.627929688 11.2880859 0.627929688 8.92675781 8.41650391 8.92675781 8.41650391 0.662109375 10.777832 0.662109375 10.777832 8.92675781 18.5664062 8.92675781 18.5664062 11.2880859" />
         </g>
       </symbol>
@@ -22,13 +22,14 @@ const Header = () => {
       <symbol id="pause" viewBox="0 0 14 21">
         <title>Artboard</title>
         <desc>Created with Sketch.</desc>
-        <g id="Artboard" stroke="none" strokWidth="1" fill="none" fillRule="evenodd">
+        <g id="Artboard" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
           <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="0 -1.11910481e-13 4 -1.11910481e-13 4 21 0 21" />
           <polygon id="Line" fill="#EEE5B5" fillRule="nonzero" points="10 -1.11910481e-13 14 -1.11910481e-13 14 21 10 21" />
         </g>
       </symbol><symbol id="play-s" viewBox="0 0 19 19">
         <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5" />
-      </symbol></svg>
+      </symbol>
+    </svg>
   </div>;
 };
 
