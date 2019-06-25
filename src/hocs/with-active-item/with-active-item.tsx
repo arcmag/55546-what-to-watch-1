@@ -1,7 +1,11 @@
-import React from 'react';
+import * as React from 'react';
+
+interface State {
+  activeItem?: any
+}
 
 const withActiveItem = (Component) => {
-  class WithActiveItem extends React.Component {
+  class WithActiveItem extends React.Component<React.ComponentProps<typeof Component>, State> {
     constructor(props) {
       super(props);
 

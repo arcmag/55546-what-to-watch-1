@@ -5,7 +5,7 @@ exports[`Test GenreList renderer 1`] = `
   autoPlay={true}
   height="175"
   muted={true}
-  poster="video.mp4"
+  poster="poster.jpg"
   src="video.mp4"
   width="280"
 />

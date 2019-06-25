@@ -1,8 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {Operation} from '../../reducer/user/user';
 
-class SignIn extends React.PureComponent {
+interface SingInDataType {
+  email: string,
+  password: string
+}
+
+interface Props {
+  signIn: (data: SingInDataType) => void,
+}
+
+class SignIn extends React.PureComponent<Props> {
+  private _emailField: React.RefObject<HTMLInputElement>;
+  private _passwordField: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -80,9 +92,9 @@ class SignIn extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps);
-const mapDispatchToProps = (dispatch) => ({
-  signIn: (data) => {
+const mapStateToProps = (state: any, ownProps: any) => Object.assign({}, ownProps);
+const mapDispatchToProps = (dispatch: any) => ({
+  signIn: (data: SingInDataType) => {
     dispatch(Operation.signIn(data));
   }
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {ActionsCreator as UserActionsCreator} from '../../reducer/user/user';
 import {ActionsCreator as DataActionsCreator} from '../../reducer/data/data';
@@ -8,14 +7,25 @@ import {getGenre, getRequired} from '../../reducer/user/selectors';
 
 import {Router, Switch, Route, Redirect} from 'react-router-dom';
 
-import MainPage from '../main-page/main-page.jsx';
-import Header from '../header/header.jsx';
-import SignIn from '../sign-in/sign-in.jsx';
-import Favorites from '../favorites/favorites.jsx';
+import {FilmType} from '../../global-types';
 
-import history from '../../history.js';
+import MainPage from '../main-page/main-page';
+import Header from '../header/header';
+import SignIn from '../sign-in/sign-in';
+import Favorites from '../favorites/favorites';
 
-class App extends React.Component {
+import history from '../../history';
+
+interface Props {
+  films: FilmType[],
+  genresList: string[],
+  genre: string,
+  getFilmsByGenre: (genre: string) => void,
+  setActiveGenre: (genre: string) => void,
+  isRequired: boolean,
+}
+
+class App extends React.Component<Props, null> {
   render() {
     const {
       films,
@@ -41,6 +51,10 @@ class App extends React.Component {
           }}/>
 
           <Route path="/favorites" render={() => {
+            if (isRequired === null) {
+              return null;
+            }
+
             if (!isRequired) {
               return <Redirect to="/" />;
             }
@@ -66,26 +80,18 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  films: propTypes.array.isRequired,
-  genresList: propTypes.array.isRequired,
-  genre: propTypes.string.isRequired,
-  getFilmsByGenre: propTypes.func.isRequired,
-  setActiveGenre: propTypes.func.isRequired,
-};
-
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state: any, ownProps: any) => Object.assign({}, ownProps, {
   isRequired: getRequired(state),
   genresList: getGenresList(state),
   films: getFilms(state),
   genre: getGenre(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  getFilmsByGenre: (genre) => {
+const mapDispatchToProps = (dispatch: any) => ({
+  getFilmsByGenre: (genre: string) => {
     dispatch(DataActionsCreator.getFilmsByGenre(genre));
   },
-  setActiveGenre: (genre) => {
+  setActiveGenre: (genre: string) => {
     dispatch(UserActionsCreator.setGenre(genre));
   }
 });

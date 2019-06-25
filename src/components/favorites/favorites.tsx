@@ -1,10 +1,17 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
+
+import {FilmType} from '../../global-types';
+
 import {getFavoriteFilms} from '../../reducer/data/selectors';
 import {Operation} from '../../reducer/data/data';
-import MovieCard from '../movie-card/movie-card.jsx';
+import MovieCard from '../movie-card/movie-card';
 
-class Favorites extends React.PureComponent {
+interface Props {
+  favoriteFilms: FilmType[]
+}
+
+class Favorites extends React.PureComponent<Props, null> {
   constructor(props) {
     super(props);
     props.loadFavoriteFilms();
@@ -58,11 +65,11 @@ class Favorites extends React.PureComponent {
   }
 }
 
-const mapStateToProps = (state, ownProps) => Object.assign({}, ownProps, {
+const mapStateToProps = (state: any, ownProps: any) => Object.assign({}, ownProps, {
   favoriteFilms: getFavoriteFilms(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch: any) => ({
   loadFavoriteFilms: () => {
     dispatch(Operation.loadFavoriteFilms());
   }

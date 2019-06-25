@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviesList from "./movies-list.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import MoviesList from "./movies-list";
 
 const mockFilms = [
   {

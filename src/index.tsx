@@ -1,8 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import App from './components/app/app.jsx';
+import App from './components/app/app';
 import thunk from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {createAPI} from './api';
@@ -12,12 +12,12 @@ import {Operation as UserOperation, ActionsCreator} from './reducer/user/user';
 
 const mainContainer = document.querySelector(`#root`);
 
-const init = () => {
-  const api = createAPI(() => {
+const init = (): void => {
+  const api = createAPI((): void => {
     store.dispatch(ActionsCreator.setRequired(false));
   });
 
-  const store = createStore(
+  const store: any = createStore(
       reducer,
       composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
   );

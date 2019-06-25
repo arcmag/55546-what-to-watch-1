@@ -1,7 +1,14 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import * as React from 'react';
 
-const GenreList = (props) => {
+interface Props {
+  getFilmsByGenre: (genre: string) => void,
+  setActiveGenre: (genre: string) => void,
+  setActiveItem: (item: string) => void,
+  activeItem?: string,
+  genres: string[],
+}
+
+const GenreList: React.FunctionComponent<Props> = (props) => {
   const {
     getFilmsByGenre,
     genres,
@@ -11,7 +18,7 @@ const GenreList = (props) => {
   } = props;
 
   return <ul className="catalog__genres-list">
-    {genres.map((it, idx) =>
+    {genres.map((it: string, idx: number) =>
       <li
         key={idx}
         className={`catalog__genres-item ${it === activeItem ? `catalog__genres-item--active` : ``}`}
@@ -25,14 +32,6 @@ const GenreList = (props) => {
       </li>
     )}
   </ul>;
-};
-
-GenreList.propTypes = {
-  getFilmsByGenre: propTypes.func.isRequired,
-  genres: propTypes.array.isRequired,
-  setActiveGenre: propTypes.func.isRequired,
-  setActiveItem: propTypes.func.isRequired,
-  activeItem: propTypes.any,
 };
 
 export default GenreList;

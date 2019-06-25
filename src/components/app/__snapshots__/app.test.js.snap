@@ -236,8 +236,9 @@ Array [
                 Play
               </span>
             </button>
-            <button
+            <a
               className="btn btn--list movie-card__button"
+              href="/favorites"
               type="button"
             >
               <svg
@@ -252,7 +253,7 @@ Array [
               <span>
                 My list
               </span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -280,7 +281,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            All genres
+            fantasy
           </a>
         </li>
         <li
@@ -290,7 +291,9 @@ Array [
             className="catalog__genres-link"
             href="#"
             onClick={[Function]}
-          />
+          >
+            comedy
+          </a>
         </li>
       </ul>
       <div
@@ -298,6 +301,7 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -305,9 +309,7 @@ Array [
             onMouseOver={[Function]}
           >
             <img
-              alt="Title film"
               height="175"
-              src="test.jpg"
               width="280"
             />
           </div>
@@ -317,13 +319,12 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              Title film
-            </a>
+            />
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
         >
           <div
             className="small-movie-card__image"
@@ -331,9 +332,7 @@ Array [
             onMouseOver={[Function]}
           >
             <img
-              alt="Title film"
               height="175"
-              src="test.jpg"
               width="280"
             />
           </div>
@@ -343,9 +342,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
-            >
-              Title film
-            </a>
+            />
           </h3>
         </article>
       </div>

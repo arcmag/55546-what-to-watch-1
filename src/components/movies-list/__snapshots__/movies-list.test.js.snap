@@ -6,6 +6,7 @@ exports[`Test MoviesList 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -13,9 +14,7 @@ exports[`Test MoviesList 1`] = `
       onMouseOver={[Function]}
     >
       <img
-        alt="Title film"
         height="175"
-        src="test.jpg"
         width="280"
       />
     </div>
@@ -25,13 +24,12 @@ exports[`Test MoviesList 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-      >
-        Title film
-      </a>
+      />
     </h3>
   </article>
   <article
     className="small-movie-card catalog__movies-card"
+    onClick={[Function]}
   >
     <div
       className="small-movie-card__image"
@@ -39,9 +37,7 @@ exports[`Test MoviesList 1`] = `
       onMouseOver={[Function]}
     >
       <img
-        alt="Title film"
         height="175"
-        src="test.jpg"
         width="280"
       />
     </div>
@@ -51,9 +47,7 @@ exports[`Test MoviesList 1`] = `
       <a
         className="small-movie-card__link"
         href="movie-page.html"
-      >
-        Title film
-      </a>
+      />
     </h3>
   </article>
 </div>

@@ -1,6 +1,6 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import {App} from "./app.jsx";
+import * as React from "react";
+import * as renderer from "react-test-renderer";
+import {App} from "./app";
 
 const mock = {
   films: [
@@ -15,18 +15,21 @@ const mock = {
       title: `Title film`
     }
   ],
-  genres: [`fantasy`, `comedy`],
+  genresList: [`fantasy`, `comedy`],
   genre: `fantasy`,
+  isRequired: false,
 };
+
 
 it(`Test App`, () => {
   const tree = renderer.create(<App
     films={mock.films}
-    genres={mock.genres}
+    genresList={mock.genresList}
     genre={mock.genre}
     getFilmsByGenre={jest.fn()}
     setActiveGenre={jest.fn()}
     selectedGenre={mock.genre}
+    isRequired={mock.isRequired}
   />).toJSON();
   expect(tree).toMatchSnapshot();
 });

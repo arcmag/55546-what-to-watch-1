@@ -1,15 +1,24 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import * as React from 'react';
 
-import MoviesList from '../movies-list/movies-list.jsx';
-import GenreList from '../genre-list/genre-list.jsx';
+import {FilmType} from '../../global-types';
+
+import MoviesList from '../movies-list/movies-list';
+import GenreList from '../genre-list/genre-list';
 
 import withActiveItem from '../../hocs/with-active-item/with-active-item';
 
 const WrapperGenreList = withActiveItem(GenreList);
 const WrapperMoviesList = withActiveItem(MoviesList);
 
-class MainPage extends React.PureComponent {
+interface Props {
+  getFilmsByGenre: (genre: string) => void,
+  setActiveGenre: (genre: string) => void,
+  films: FilmType[],
+  selectedGenre: string,
+  genres: string[],
+}
+
+class MainPage extends React.PureComponent<Props, null> {
   render() {
     const {
       setActiveGenre,
@@ -107,13 +116,5 @@ class MainPage extends React.PureComponent {
     </>;
   }
 }
-
-MainPage.propTypes = {
-  getFilmsByGenre: propTypes.func.isRequired,
-  setActiveGenre: propTypes.func.isRequired,
-  films: propTypes.array.isRequired,
-  selectedGenre: propTypes.string.isRequired,
-  genres: propTypes.array.isRequired,
-};
 
 export default MainPage;

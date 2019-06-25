@@ -1,11 +1,21 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import * as React from 'react';
+import {FilmType} from '../../global-types';
 
-import VideoPlayer from '../video-player/video-player.jsx';
+import VideoPlayer from '../video-player/video-player';
 
 const PLAY_DELAY = 1000;
 
-class MovieCard extends React.PureComponent {
+interface Props {
+  data: FilmType,
+  onCardClick?: (item: FilmType) => void,
+}
+
+interface State {
+  timerActivated: any,
+  isActivated: boolean,
+}
+
+class MovieCard extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
 
@@ -67,10 +77,5 @@ class MovieCard extends React.PureComponent {
     </article>;
   }
 }
-
-MovieCard.propTypes = {
-  data: propTypes.object.isRequired,
-  onCardClick: propTypes.func.isRequired
-};
 
 export default MovieCard;
